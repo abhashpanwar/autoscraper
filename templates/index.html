@@ -1,0 +1,116 @@
+<html>
+    <head>
+        <title>AutoScraper</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    </head>
+    <body>
+        
+        <style>
+            .header{ padding: 13px 10px 10px 10px;
+                background-color: #131921;}
+            .btn-outline-secondary {    
+                border-color: #febd69;
+            }
+            .btn-outline-secondary:hover {
+            color: #fff;
+            background-color: #fc9917;
+            border-color: #fc9917;
+            }
+            .name { color: white;}
+            a{ text-decoration: none;color: white;}
+            a:hover{ color: white;}
+            .header2{
+                box-shadow: 1px 1px 12px 1px #888888;}
+            .checked{ color: #FFA41C;}
+            .price { color: red; font-size: 40px;position: absolute;margin-top: 20px;}
+            .raw-data
+            {padding: 40px 0px 40px 0px;border-bottom: 2px solid grey;}
+            .footer {padding: 10px;border-top: 1px solid black;}
+            .hidden{ display: none;}
+        </style>
+        <div class="header">
+            <div class="row" style="margin-right: -10px;">
+                <div class="col-md-2 logo">
+                    <a href="/"><img src="{{url_for('static',filename='logo3.png')}}" width="100%" height="40px"/></a>
+                </div>
+                <div class="col-md-8">
+                    <form method="get" accept="/" style="margin: 0px;">
+                    <div class="input-group">
+                        <div class="input-group-append">
+                            <span class="input-group-text">All</span>
+                        </div>
+                        <input type="text" name="search" class="form-control" placeholder="" aria-label="query" aria-describedby="basic-addon2" value="{{data.query}}">
+                        <div class="input-group-append" style="background-color: #febd69;">
+                          <button class="btn btn-outline-secondary" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                        </div>
+                    </div>
+                    </form>
+                </div>
+                <div class="col-md-1 name">
+                    <a href="https://www.linkedin.com/in/panwar-abhash-anil/" target="_blank"><small class="">Hello, Abhash</small><br>
+                    <span><b>LinkedIn</b></span></a>
+                </div>
+                <div class="col-md-1">
+                    <img src="{{url_for('static',filename='cart.png')}}" width="80px" height="40px"/>
+                </div>
+            </div>
+        </div>
+        <div class="content" style="min-height: 508px;">
+        {% if data.totalRecords==-1%}
+            <div class="static-content">
+                <img src="{{url_for('static',filename='img6.jpg')}}" width="100%" height="40%"/>            
+                <img src="{{url_for('static',filename='img1.jpg')}}" width="100%" height="41%"/>            
+            </div>
+        {% else %}            
+            <div class="header2" style="padding:10px 138px 10px 138px">
+                <span>{{data.totalRecords}} results for <b>"{{data.query}}"</b></span>
+                <p class="pull-right">
+                    <select name="sortby"><option>Sort by: Price: High to low</option></select>
+                </p>
+            </div> 
+        {% if data.totalRecords %}       
+            <div class="container   search-bar">
+                <div class="" style="">
+                    {% for row in data.searchData %}
+                    <div class="row col-lg-12 raw-data" style="margin:0px;"  >                    
+                        <div class="col-lg-2">
+                            <img src="{{row[1]}}" width="100%" style="min-height:200px;">
+                        </div>
+                        <div class="col-lg-10">                            
+                            <h3>{{row[0]}}</h3>
+                            <span> 
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                                {{row[3]}}
+                            </span>
+                            <br>
+                            <span class="price"><sup>₹</sup>{{row[2]}}</span>                        
+                        </div>                                                
+                    </div>    
+                    {% endfor %}                                                        
+                </div> 
+                <center><h2>The END</h2></center>           
+            </div>  
+        {% else %}
+            <div style="padding:50px 10px 10px 138px;">
+                <h4>No results for <u>{{data.query}}</u>.<br>
+                Try checking your spelling or use more general terms</h4>
+            </div>
+        {% endif %}
+        {% endif %}    
+        </div>  
+        <div class="footer">
+            <h4 style="margin: 0px;">Copyright © 2021 | <a href="https://www.linkedin.com/in/panwar-abhash-anil/" target="_blank" style="color: black;">Panwar Abhash Anil</a> - All rights reserved.</h4>
+        </div>
+    </body>
+</html>
