@@ -12,11 +12,11 @@ def home():
         sortby = request.args.get('sortby','relevanceblender')
         
         #call function to retrieve data
-        search_data,url = searchquery(search,sortby)
+        search_data,original_url = searchquery(search,sortby)
         data_length = len(search_data)
         
         #show to user
-        return render_template("index.html",data = {'query':search,'sortby':sortby,'searchData':search_data,'totalRecords':data_length}) 
+        return render_template("index.html",data = {'original_url':original_url,'query':search,'sortby':sortby,'searchData':search_data,'totalRecords':data_length}) 
     
     #default data_length when no search
     data_length = -1

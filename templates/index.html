@@ -64,11 +64,12 @@
                 <div class="header2">                                
                         <form method="get" action="/" id="form-sortby">
                             <div class="row margin-left-0" style="padding: 10px 138px 10px 138px;">
-                                <div class="col-lg-4 col-md-4 col-xs-12">
+                                <div class="col-lg-8 col-md-8 col-xs-12">
                                     <span>{{data.totalRecords}} results for <b>"{{data.query}}"</b></span>
+                                    <a class="color-b" href="{{data.original_url}}" target="_blank">View on Amazon</a>
                                     <input type="hidden" value="{{data.query}}" name="search"/>
                                 </div>
-                                <div class="col-lg-8 col-md-8 col-xs-12">                            
+                                <div class="col-lg-4 col-md-4 col-xs-12">                            
                                     <select class="pull-right" name="sortby" onchange="this.form.submit()" >
                                         <option value="relevanceblender" {% if data.sortby=='relevanceblender'%}selected{% endif %} >Sort by: Featured</option>
                                         <option value="price-asc-rank" {% if data.sortby=='price-asc-rank'%}selected{% endif %} >Sort by: Price: Low to high</option>
