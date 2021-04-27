@@ -32,13 +32,13 @@ def searchquery(search,sortby):
 
     #creating object and loading
     amazon_scraper = AutoScraper()
-    amazon_scraper.load('amazon_in')    
+    amazon_scraper.load('amazon_in.json')    
     
     #get data
     data = amazon_scraper.get_result_similar(amazon_url, group_by_alias=True)
 
     #combine data into tuple to show it to user
-    search_data = tuple(zip(data['Title'],data['ImageUrl'],data['Price'],data['Rating']))
+    search_data = tuple(zip(data['Title'],data['ImageUrl'],data['Price'],data['Reviews']))
 
     #creating dataframe so that user can download it in csv format
     df = pd.DataFrame(columns=['Query','Title','Price','Reviews','ImageUrl'])
