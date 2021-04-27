@@ -6,7 +6,7 @@ Deployment: https://abhash-autoscraper.herokuapp.com/
 Library: <a href="https://pypi.org/project/autoscraper/">AutoScraper</a>
 
 Source Code: https://colab.research.google.com/drive/1b2oOz3ZZJAuE1p5F947bs0RCUaBUK7ju?usp=sharing
-
+<pre>
 ├── static
 │    ├── iamges
 ├── templates
@@ -16,7 +16,7 @@ Source Code: https://colab.research.google.com/drive/1b2oOz3ZZJAuE1p5F947bs0RCUa
 ├── app.py
 │    ├── "home" the main function
 │    ├── "searchquery" function
-
+</pre>
 # Keep sharing knowledge | Be happy
 
 
