@@ -17,7 +17,7 @@ Source Code: https://colab.research.google.com/drive/1b2oOz3ZZJAuE1p5F947bs0RCUa
 │    ├── "home" the main function
 │    ├── "searchquery" function
 </pre>
-<center><h2> Keep sharing knowledge | Be happy</h2></center>
+# Keep Learning | Keep Sharing
 
 
 
