@@ -1,0 +1,26 @@
+.header{ padding: 13px 10px 10px 10px;
+    background-color: #131921;}
+.btn-outline-secondary {    
+    border-color: #febd69;
+}
+.btn-outline-secondary:hover {
+color: #fff;
+background-color: #fc9917;
+border-color: #fc9917;
+}
+.name { color: white;}
+a{ text-decoration: none;color: white;}
+a:hover{ color: white;}
+.header2{
+    box-shadow: 1px 1px 12px 1px #888888;}
+.checked{ color: #FFA41C;}
+.price { color: red; font-size: 30px;position: absolute;margin-top: 10px;}
+.raw-data
+{padding: 20px 0px 20px 0px;border-bottom: 2px solid grey;}
+.footer {padding: 10px;border-top: 1px solid black;color: black;}
+.footer a:hover{ color:red;font-weight: 700;}
+.hidden{ display: none;}
+.color-b{color:black}
+.margin-0{margin: 0px;}
+a:hover{ color:red;font-weight: 700;}
+.margin-left-0{ margin-right: 0px;}
