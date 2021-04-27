@@ -1,7 +1,13 @@
 from flask import Flask, render_template, request
-  
+from autoscraper import AutoScraper
+import pandas as pd
+import time
 app = Flask(__name__)
 
+#creating object and loading
+amazon_scraper = AutoScraper()
+amazon_scraper.load('amazon_in.json')    
+    
 @app.route("/",methods=['GET'])  
 def home():    
 
@@ -22,17 +28,10 @@ def home():
     data_length = -1
     return render_template("index.html",data = {'query':"",'searchData':"d",'totalRecords':data_length}) 
 def searchquery(search,sortby):
-    #load library
-    from autoscraper import AutoScraper
-    import pandas as pd
-    import time
+    #load library    
 
     #define url
-    amazon_url="https://www.amazon.in/s?k={}&s={}".format(search,sortby)
-
-    #creating object and loading
-    amazon_scraper = AutoScraper()
-    amazon_scraper.load('amazon_in.json')    
+    amazon_url="https://www.amazon.in/s?k={}&s={}".format(search,sortby)    
     
     #get data
     data = amazon_scraper.get_result_similar(amazon_url, group_by_alias=True)
